@@ -97,14 +97,15 @@ app.controller("mainCtrl",function($scope, $http,$rootScope,$location,mainServic
 			DisplayPicture: "img/authors/0.jpg"//don't know what to do with it
 			}
 			//This has to be done using service
-		//$rootScope.data.Authors.push(tempAuthorData);	
 		mainService.addAuthor(tempAuthorData);
 		$location.path('reset');/*to redirect the page after saving the data to home.*/
 							  /*dont write # cause it will be encoded as %23 and then it dosent load the correct page cause your url is /%23something/*/
 		};
 		
-	$scope.fetchBookDetail=function(event){
-		var id=event.srcElement.id;
+	$scope.fetchBookDetail=function(event1){
+		console.log(event1);
+		var id = event1.target.id || event1.srcElement.id;
+		console.log(id);
 		var bookDisplay = mainService.getBook(id);/*THis is to get data from service to*/ 											/*display it in the updateBook page*/
 		console.log(bookDisplay);
 		$scope.ISBNTemp = bookDisplay.ISBN;
@@ -114,15 +115,21 @@ app.controller("mainCtrl",function($scope, $http,$rootScope,$location,mainServic
 		$scope.priceTemp = bookDisplay.price;
 		$scope.availableOnTemp = bookDisplay.availableOn;
 	};
-		$scope.fetchAuthorDetail=function(event){
-		var id=event.srcElement.id;
+		$scope.fetchAuthorDetail=function(event1){
+		console.log(event1);
+		var e = event1.target.id || event1.srcElement.id;
+		var id = e.id;
+		
 		var bookDisplay = mainService.getAuthor(id);/*THis is to get data from service to*/ 											/*display it in the updateAuthor page*/
 		console.log(bookDisplay);
-		$scope.ISBNTemp = bookDisplay.ISBN;
-		$scope.BookTitleTemp = bookDisplay.BookTitle;
+		/*putting the data in $scope so we acess it into the edit pages and in the form fields*/
+		/*problem is that we have only one controller and ng-view needs another ng-view*/
+		/*maybe gonna need another controller*/
 		$scope.AuthorNameTemp = bookDisplay.AuthorName;
-		$scope.authorIdTemp = bookDisplay.authorId;
-		$scope.priceTemp = bookDisplay.price;
-		$scope.availableOnTemp = bookDisplay.availableOn;
+		$scope.EmailTemp = bookDisplay.Email;
+		$scope.DepartmentTemp = bookDisplay.Department;
+		$scope.WebsiteTemp = bookDisplay.Website;
+		$scope.SkillsTemp = bookDisplay.Skills;
+		$scope.DisplayPictureTemp = bookDisplay.DisplayPicture;
 	};
 });
