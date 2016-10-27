@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HomePage</title>
+		<meta charset="UTF-8">
+		
+		<!--StyleSheets for Boootstrap-->
+		<link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+		<link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap-theme.min.css">		
+		<link rel="stylesheet" href="css\default.css">
+		<!--script for bootstrap-->
+		<script src = "js\jquery.js"></script>
+		<script src="node_modules\bootstrap\dist\js\bootstrap.min.js" ></script>
+		<!--scripts defined in js folder-->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		<script src="js\default.js" ></script>
+	</head>
+	<body ng-app="myApp">
+		<div class="container-fluid">
+			<header>
+				<div class="row mid">
+					<div class="col-lg-12 bg-primary">
+						<h1>Library Project!!</h1>
+					</div>
+				</div>
+			</header>
+			<div ng-view>
+				
+			</div><!--view Ends here-->
+		</div><!--Container Ends here-->
+	</body>
+</html>

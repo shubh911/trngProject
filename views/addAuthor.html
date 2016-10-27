@@ -1,0 +1,40 @@
+
+<h2>Add Author</h2>
+
+<form ng-controller="mainCtrl"  name="myForm" novalidate>
+
+<p>Name:<br>
+	<input type="text" name="authorName" ng-model="authorName" required>
+	<span style="color:red" ng-show="myForm.authorName.$dirty && myForm.authorName.$invalid">
+		<span ng-show="myForm.authorName.$error.required">Name is required.</span>
+	</span>
+</p>
+
+<p>Email:<br>
+	<input type="email" name="email" ng-model="email" required>
+	<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+		<span ng-show="myForm.email.$error.required">Email is required.</span>
+		<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+	</span>
+</p>
+<p>Department:<br>
+	<input type="text" name="department" ng-model="department" required>
+	<span style="color:red" ng-show="myForm.department.$dirty && myForm.department.$invalid">
+		<span ng-show="myForm.department.$error.required">Department is required.</span>
+	</span>
+<p>Website:<br>
+	<input type="url" name="website" ng-model="website" required>
+	<span style="color:red" ng-show="myForm.website.$dirty && myForm.website.$invalid">
+		<span ng-show="myForm.website.$error.required">Website is required.</span>
+	</span>
+<p>Skills:<br>
+	<input type="text" name="skills" ng-model="skills" required>
+	<span style="color:red" ng-show="myForm.skills.$dirty && myForm.skills.$invalid">
+		<span ng-show="myForm.skills.$error.required">Skills is required.</span>
+	</span>
+</p>
+
+<p>
+	<input class="btn btn-sucess" ng-click="addAuthorFunction()" onclick="location.href='#\'" type="submit" value="Upload">
+</p>
+</form>

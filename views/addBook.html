@@ -1,0 +1,38 @@
+
+<h2>Add Book</h2>
+
+<form ng-controller="mainCtrl"  name="myForm" novalidate>
+	<p>ISBN:<br>
+		<input type="text" name="isbn" ng-model="isbn" required>
+		<span style="color:red" ng-show="myForm.isbn.$dirty && myForm.isbn.$invalid">
+			<span ng-show="myForm.isbn.$error.required">Name is required.</span>
+		</span>
+	</p>
+
+	<p>Book Title:<br>
+		<input type="text" name="bookTitle" ng-model="bookTitle" required>
+		<span style="color:red" ng-show="myForm.bookTitle.$dirty && myForm.bookTitle.$invalid">
+			<span ng-show="myForm.bookTitle.$error.required">bookTitle is required.</span>
+		</span>
+	</p>
+	<p>Book Author:<br>
+		<input type="text" name="bookAuthor" ng-model="bookAuthor" required>
+		<span style="color:red" ng-show="myForm.bookAuthor.$dirty && myForm.bookAuthor.$invalid">
+			<span ng-show="myForm.bookAuthor.$error.required">bookAuthor is required.</span>
+		</span>
+	<p>Book Price:<br>
+		<input type="text" name="bookPrice" ng-model="bookPrice" required>
+		<span style="color:red" ng-show="myForm.bookPrice.$dirty && myForm.bookPrice.$invalid">
+			<span ng-show="myForm.bookPrice.$error.required">bookPrice is required.</span>
+		</span>
+	<p>Avilable On:<br>
+		<input type="text" name="availableOn" ng-model="availableOn" required>
+		<span style="color:red" ng-show="myForm.availableOn.$dirty && myForm.availableOn.$invalid">
+			<span ng-show="myForm.availableOn.$error.required">Skills is required.</span>
+		</span>
+	</p>
+
+	<p>
+		<input class="btn btn-success" ng-click="addBookFunction()" type="submit" value="Upload">
+	</p>
+</form>

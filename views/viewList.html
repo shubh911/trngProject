@@ -1,0 +1,22 @@
+<div ng-controller="mainCtrl">
+	<div class="row mid">	
+		<table class="table">
+			<tr class="col-lg-8">
+				<th>ISBN</th>
+				<th>BOOK-TITLE</th>
+				<th>AUTHOR-NAME</th>
+			</tr>
+			<tr class="col-lg-8" ng-repeat="x in data.Books">
+				<td ng-click ="fetchBookDetail($event)"  href = "#updateBook" id = "{{data.Books.indexOf(x)}}"><a href="">{{x.ISBN}}</a></td>
+				<td>{{x.BookTitle}}</td>
+				<td ng-click ="fetchAuthorDetail($event)"  href = "#updateAuthor" id = "{{data.Authors.indexOf(x)}}"><a href="#">{{x.AuthorName}}</a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 mid">
+			<button  class="btn btn-success" onclick="location.href='#addBook'">AddNewBook</button>
+			<button  class="btn btn-danger" onclick="location.href='#addAuthor'">AddNewAuthor</button>
+		</div>
+	</div>
+</div>

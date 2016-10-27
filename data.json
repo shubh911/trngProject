@@ -1,0 +1,88 @@
+ { 
+	"library": {
+		"Books":[
+			{
+			  "ISBN": 123567,
+			  "BookTitle": "Automative Mechanics",
+			  "AuthorName": "Dennis Ritchie", 
+			  "authorId": 3,
+			  "price": 700,
+			  "availableOn": "22-Jun-2016"
+			},
+			 {
+			  "ISBN": 123568,
+			  "BookTitle": "Inspiring Thoughts",
+			  "AuthorName": "Herbert Schidlt", 
+			  "authorId": 4,
+			  "price": 900,
+			  "availableOn": "22-Jun-2016"
+			}, 
+			{
+			  "ISBN": 123569,
+			  "BookTitle": "Go",
+			  "AuthorName": "Y Kentakar", 
+			  "authorId": 1,
+			  "price": 550,
+			  "availableOn": "22-Jun-2016"
+			},
+			{
+			  "ISBN": 123570,
+			  "BookTitle": "Let us C",
+			  "AuthorName": "Swami Vivekananda", 
+			  "authorId": 2,
+			  "price": 550,
+			  "availableOn": "22-Jun-2016"
+			}
+		],
+		
+	"Authors":[
+		{
+			"Id": 0,
+			"AuthorName": "Dennis Ritchie", 
+			"Email": "dennis.ritchie@c.com",
+			"Department": "Programming",
+			"Website": "c.com",
+			"Skills": "scientist",
+			"DisplayPicture": "img/authors/0.jpg"
+		},
+		
+		{
+			"Id": 1,
+			"AuthorName": "Herbert Schidlt", 
+			"Email": "Herbert.Schidlt@java.com",
+			"Department": "Programming",
+			"Website": "java.com",
+			"Skills": "programmer",
+			"DisplayPicture": "img/authors/1.jpg"
+		},
+		
+		{
+			"Id": 2,
+			"AuthorName": "Y Kentakar", 
+			"Email": "y.Kentakar@letusc.com",
+			"Department": "Programming",
+			"Website": "letusc.com",
+			"Skills": "professor",
+			"DisplayPicture": "img/authors/2.jpg"
+		},
+		{
+			"Id": 3,
+			"AuthorName": "William H Crouse", 
+			"Email": "williamhcrouse@gmail.com",
+			"Department": "Engineering",
+			"Website": "automativemechanics.com",
+			"Skills": "professor",
+			"DisplayPicture": "img/authors/2.jpg"
+		},
+		{
+			"Id": 4,
+			"AuthorName": "Swami Vivekananda", 
+			"Email": "swamivivekanada@gmail.com",
+			"Department": "Religion",
+			"Website": "swamivivekananda.com",
+			"Skills": "Philospher",
+			"DisplayPicture": "img/authors/4.jpg"
+		}
+	]
+}
+}
