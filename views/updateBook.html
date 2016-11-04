@@ -1,9 +1,33 @@
 <div ng-controller="mainCtrl">
-<h2>Old Details</h2>
-<h3>{{ISBNTemp}}</h3>
-<h3>{{BookTitleTemp}}</h3>
-<h3>{{AuthorNameTemp}} </h3>
-<h3>{{authorIdTemp}}</h3>
-<h3>{{priceTemp}}</h3>
-<h3>{{availableOnTemp}}</h3>
+	<h2>Old Details</h2>
+	<h3>{{bookDisplayTemp.ISBN}}</h3>
+	<h3>{{bookDisplayTemp.BookTitle}}</h3>
+	<h3>{{bookDisplayTemp.AuthorName}} </h3>
+	<h3>{{bookDisplayTemp.authorId}}</h3>
+	<h3>{{bookDisplayTemp.price}}</h3>
+	<h3>{{bookDisplayTemp.availableOn}}</h3>
+	<button>Edit</button>
+	
+	<!--The upper is just to show data and testing purpose-->
+
+	<!--From here there is a form should be pooped up on a button click event
+		but the data of the upper side sould be auto filled in the form input fieldset	
+		The user allowed to change it but not allowed to update id(cause it is auto genrated). -->
+	<h2>Edit Book Details</h2>
+	<div>
+		<form>
+			<h3>ISBN</h3>
+			<input type="text" ng-model="returnIsbn" value="{{bookDisplayTemp.ISBN}}"/>
+			<h3>Title</h3>
+			<input type="text" ng-model="returnBookTitle" value="{{bookDisplayTemp.BookTitle}}"/>
+			<h3>Author</h3>
+			<input type="text" ng-model="returnAuthorName" value="{{bookDisplayTemp.AuthorName}}"/>
+			<h3>Price</h3>
+			<input type="text" ng-model="returnPrice" value="{{bookDisplayTemp.price}}"/>
+			<h3>Available On</h3>
+			<input type="text" ng-model="returnAvailableOn" value="{{bookDisplayTemp.availableOn}}">
+			<h3></h3>
+			<input type="submit" class="btn btn-danger" ng-click="bookEditReturn()" value="Edit it..">
+		</form>
+	</div>
 </div>

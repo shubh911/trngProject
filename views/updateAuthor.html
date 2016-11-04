@@ -1,0 +1,32 @@
+<div ng-controller="mainCtrl">
+	<h2>Old Details</h2>
+	<h3>{{authorDisplayTemp.AuthorName}}</h3>
+	<h3>{{authorDisplayTemp.Email}}</h3>
+	<h3>{{authorDisplayTemp.Department}} </h3>
+	<h3>{{authorDisplayTemp.Website}}</h3>
+	<h3>{{authorDisplayTemp.Skills}}</h3>
+	<h3>{{authorDisplayTemp.DisplayPicture}}</h3>
+	</div>
+	<!--The upper is just to show data and testing purpose-->
+
+	<!--From here there is a form should be pooped up on a button click event
+		but the data of the upper side sould be auto filled in the form input fieldset	
+		The user allowed to change it but not allowed to update id(cause it is auto genrated). -->
+	<h2>Edit Author Details</h2>
+	<div>
+		<form>
+			<h3>Name</h3>
+			<input type="text" ng-model="returnAuthorName" value="{{authorDisplayTemp.AuthorName}}"/>
+			<h3>Email</h3>
+			<input type="text" ng-model="returnEmail" value="{{authorDisplayTemp.Email}}"/>
+			<h3>Department</h3>
+			<input type="text" ng-model="returnDepartment" value="{{authorDisplayTemp.Department}}"/>
+			<h3>Website</h3>
+			<input type="text" ng-model="returnWebsite" value="{{authorDisplayTemp.Website}}"/>
+			<h3>Skills</h3>
+			<input type="text" ng-model="returnSkills" value="{{authorDisplayTemp.Skills}}">
+			<h3></h3>
+			<input type="submit" class="btn btn-danger" ng-click="authorEditReturn()" value="Edit it..">
+		</form>
+	</div>
+</div>

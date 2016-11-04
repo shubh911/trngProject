@@ -37,18 +37,71 @@ app.run(function($http,$rootScope){
 });
 
 app.service('mainService', function($rootScope){
-	this.getBook = function(id)
+	this.getBook = function(isbn)
 	{
-		return $rootScope.data.Books[id];
+		for(let i;i<$rootScope.data.Books.length;i++){
+			if($rootScope.data.Books[i].ISBN===isbn){
+				return $rootScope.data.Books[i];
+			}
+		}
 	}
-	this.addBook = function(temp){
+	this.getAuthor = function(id)
+	{
+		for(let i;i<$rootScope.data.Authors.length;i++){
+			if($rootScope.data.Authors[i].AuthorName===id){
+				return $rootScope.data.Authors[i];
+			}
+		}
+	}	
+	this.addBook = function(temp){/*This is to genrate the id automatically so that the we can can use it later
+									but its etting comlicated cause i have to genrate local var and keep track of them
+									hopefully the logic is complete and in  working order cause if not then lots o time 
+									gonna get wasted.*/
+		var tempArray=$rootScope.data.Books;
+		//take a temp arr to sort so the last element has the highest id
+		tempArray=tempArray.sort(function(a,b){
+			return a.ISBN - b.ISBN;
+		});
+		console.log("should be arranged-books",tempArray);
+		//take the last element id and increment it and assign it to the new element
+		var tempId=parseInt(tempArray[tempArray.length-1].ISBN);
+		console.log("new ISBN",tempId);
+		//last element has the highest id so increment it by one will make a new unique id.
+		temp.ISBN=++tempId;
 		$rootScope.data.Books.push(temp);
 	}
 	this.addAuthor = function(temp){
+		
+		var tempArray=$rootScope.data.Authors;
+		//take a temp arr to sort so the last element has the highest id
+		tempArray=tempArray.sort(function(a,b){
+			return a.authorId - b.authorId;
+		});
+		console.log("should be arranged-authors",tempArray);
+		//take the last element id and increment it and assign it to the new element
+		var tempId=tempArray[tempArray.length-1].authorId;
+		console.log(tempId);
+		//last element has the highest id so increment it by one will make a new unique id.
+		temp.authorId=++tempId;
 		$rootScope.data.Authors.push(temp);
 	}
-	this.editStudent = function(temp){
-		students[data.id] = temp;	
+	this.updatedBookSave=function(temp){
+		for(let i;i<$rootScope.data.Books.length;i++)//Traverse and Push
+		{
+			if($rootScope.data.Books[i].ISBN===temp.ISBN)
+			{
+				$rootScope.data.Books[i]=temp;
+			}
+		}
+	}
+	this.updatedAuthorSave=function(temp){
+		for(let i;i<$rootScope.data.Books.length;i++)//Traverse and Push
+		{
+			if($rootScope.data.Authors[i].authorId===temp.authorId)
+			{
+				$rootScope.data.Authors[i]=temp;
+			}
+		}
 	}
 });
 
@@ -84,7 +137,8 @@ app.controller("mainCtrl",function($scope, $http,$rootScope,$location,mainServic
 		mainService.addBook(tempBookData);
 		console.log($rootScope.data.Books);
 		$location.path('reset');/*to redirect the page after saving the data to home.*/
-							  /*dont write # cause it will be encoded as %23 and then it dosent load the correct page cause your url is /%23something/*/
+							  /*dont write # cause it will be encoded as %23 and then it 
+							  dosent load the correct page cause your url is /%23something/*/
 	};
 	$scope.addAuthorFunction=function(){
 		var tempAuthorData={
@@ -99,37 +153,64 @@ app.controller("mainCtrl",function($scope, $http,$rootScope,$location,mainServic
 			//This has to be done using service
 		mainService.addAuthor(tempAuthorData);
 		$location.path('reset');/*to redirect the page after saving the data to home.*/
-							  /*dont write # cause it will be encoded as %23 and then it dosent load the correct page cause your url is /%23something/*/
+							  /*dont write # cause it will be encoded as %23 and then it dosent 
+							  load the correct page cause your url is /%23something/*/
 		};
 		
 	$scope.fetchBookDetail=function(event1){
-		console.log(event1);
-		var id = event1.target.id || event1.srcElement.id;
-		console.log(id);
-		var bookDisplay = mainService.getBook(id);/*THis is to get data from service to*/ 											/*display it in the updateBook page*/
-		console.log(bookDisplay);
-		$scope.ISBNTemp = bookDisplay.ISBN;
-		$scope.BookTitleTemp = bookDisplay.BookTitle;
-		$scope.AuthorNameTemp = bookDisplay.AuthorName;
-		$scope.authorIdTemp = bookDisplay.authorId;
-		$scope.priceTemp = bookDisplay.price;
-		$scope.availableOnTemp = bookDisplay.availableOn;
+			console.log(event1);
+			var id = event1.target.id || event1.srcElement.id;
+			console.log("bookISBN",id);
+			var bookDisplay = mainService.getBook(id);/*THis is to get data from service to*/
+			/*display it in the updateBook page*/
+			console.log(bookDisplay);
+			$rootScope.bookDisplayTemp.ISBN = bookDisplay.ISBN;
+			$rootScope.bookDisplayTemp.BookTitle = bookDisplay.BookTitle;
+			$rootScope.bookDisplayTemp.AuthorName = bookDisplay.AuthorName;
+			$rootScope.bookDisplayTemp.authorId = bookDisplay.authorId;
+			$rootScope.bookDisplayTemp.price = bookDisplay.price;
+			$rootScope.bookDisplayTemp.availableOn = bookDisplay.availableOn;
 	};
-		$scope.fetchAuthorDetail=function(event1){
-		console.log(event1);
-		var e = event1.target.id || event1.srcElement.id;
-		var id = e.id;
-		
-		var bookDisplay = mainService.getAuthor(id);/*THis is to get data from service to*/ 											/*display it in the updateAuthor page*/
-		console.log(bookDisplay);
-		/*putting the data in $scope so we acess it into the edit pages and in the form fields*/
-		/*problem is that we have only one controller and ng-view needs another ng-view*/
-		/*maybe gonna need another controller*/
-		$scope.AuthorNameTemp = bookDisplay.AuthorName;
-		$scope.EmailTemp = bookDisplay.Email;
-		$scope.DepartmentTemp = bookDisplay.Department;
-		$scope.WebsiteTemp = bookDisplay.Website;
-		$scope.SkillsTemp = bookDisplay.Skills;
-		$scope.DisplayPictureTemp = bookDisplay.DisplayPicture;
+	$scope.fetchAuthorDetail=function(event1){
+			console.log(event1);
+			var e = event1.target.id || event1.srcElement.id;
+			var id = e.id;
+			
+			var bookDisplay = mainService.getAuthor(id);/*THis is to get data from service to*/
+			/*display it in the updateAuthor page*/
+			console.log(bookDisplay);
+			/*putting the data in $scope so we acess it into the edit pages and in the form fields*/
+			/*problem is that we have only one controller and ng-view needs another ng-view*/
+			/*maybe gonna need another controller*/
+			$rootScope.authorDisplayTemp.AuthorName = bookDisplay.AuthorName;
+			$rootScope.authorDisplayTemp.Email = bookDisplay.Email;
+			$rootScope.authorDisplayTemp.Department = bookDisplay.Department;
+			$rootScope.authorDisplayTemp.Website = bookDisplay.Website;
+			$rootScope.authorDisplayTemp.Skills = bookDisplay.Skills;
+			$rootScope.authorDisplayTemp.DisplayPicture = bookDisplay.DisplayPicture;
+	};
+	$scope.bookEditReturn=function(){
+			/*Take The data from the edit Form and acesss The orignal index*/
+			var tempBookData={};
+			tempBookData.ISBN=$scope.returnIsbn;
+			tempBookData.bookTitle=$scope.returnBookTitle;
+			tempBookData.authorName=$scope.returnAuthorName;
+			tempBookData.price=$scope.returnPrice;
+			tempBookData.availableOn=$scope.returnAvailableOn;
+			/*call The mainService to Replace The data of orignal Index */
+			mainService.updatedBookSave(tempBookData);
+			$location.path('reset');
+	};
+	$scope.authorEditReturn=function(){
+			/*Take The data from the edit Form and acesss the orignal index*/
+			var tempBookData={};
+			tempBookData.authorName=$scope.returnAuthorName;
+			tempBookData.email=$scope.returnEmail;
+			tempBookData.department=$scope.returnDepartment;
+			tempBookData.website=$scope.returnWebsite;
+			tempBookData.skills=$scope.returnSkills;
+			/*call The mainService to Replace The orignal Index */
+			mainService.updatedAuthorSave(tempBookData);
+			$location.path('reset');
 	};
 });

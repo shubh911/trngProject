@@ -7,9 +7,9 @@
 				<th>AUTHOR-NAME</th>
 			</tr>
 			<tr class="col-lg-8" ng-repeat="x in data.Books">
-				<td ng-click ="fetchBookDetail($event)"  href = "#updateBook" id = "{{data.Books.indexOf(x)}}"><a href="">{{x.ISBN}}</a></td>
+				<td ng-click ="fetchBookDetail($event)" id ="{{x.ISBN}}"><a href = "#updateBook">{{x.ISBN}}</a></td>
 				<td>{{x.BookTitle}}</td>
-				<td ng-click ="fetchAuthorDetail($event)"  href = "#updateAuthor" id = "{{data.Authors.indexOf(x)}}"><a href="#">{{x.AuthorName}}</a></td>
+				<td ng-click ="fetchAuthorDetail($event)" id ="{{x.AuthorName}}"><a href = "#updateAuthor">{{x.AuthorName}}</a></td>
 			</tr>
 		</table>
 	</div>

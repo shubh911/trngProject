@@ -26,7 +26,13 @@
 				</div>
 			</header>
 			<div ng-view>
-				
+						<!--This is the most useful part of this page cause every view is gonna update in this area
+							*viewList
+							*addAuthor
+							*addBook
+							*updateBook& author
+							but this part needs modification cause the ng-view can also contains the another view so
+							we need to get a different controller so no ambiguity occurs with ng-view-->
 			</div><!--view Ends here-->
 		</div><!--Container Ends here-->
 	</body>
