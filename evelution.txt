@@ -1,0 +1,262 @@
+-------------------------------------------------------------------------------
+HTML & CSS
+-------------------------------------------------------------------------------
+
+Give examples of a few elements that do not need closing tags.
+
+Explain in what scenario the following tags would be used – 
+- article
+- header
+- footer
+- section
+- aside
+- figure
+- nav
+
+What is an example of a block element and an inline element? What is the
+difference between the two? In what situation would you use one over the other?
+
+Why use CSS? Why can't I simply use a center tag or a font tag to style my page?
+
+What are the different ways (or locations) you can define styles on an element?
+I can think of 3.
+
+What are the different values for the following properties? What are the
+effects of each of those values?
+- display
+- position
+- overflow
+- float
+
+What is the box model?
+
+What are the two different box-sizing values? How do they work?
+
+What is z-index? How does it work? In what situation would I use it?
+
+What is the difference between visibility: hidden and display: none?
+
+What is specificity? How do you calculate it?
+
+What does !important do? Why is it considered a bad practice?
+
+How would you go about building a 3 column layout?
+
+If you have a div on a page that matches on all of the rules below, what
+would be the computed (finally applied) style on the element?
+
+.myclass1 {
+        color: black;
+        border: 2px solid black;
+        overflow: scroll;
+}
+
+div.myclass2 {
+        color: red;
+        float: right;
+}
+
+
+div#myclass1 {
+        color: yellow;
+        border: 2px solid red;
+}
+
+-------------------------------------------------------------------------------
+SASS
+-------------------------------------------------------------------------------
+
+What are the benefits of using SASS over CSS?
+
+List out key features of SASS.
+
+Define a variable.
+
+What is interpolation?
+
+Explain what the following do - 
+@extend
+@import
+@debug
+@error
+
+What are the two types of mixin arguments?
+
+-------------------------------------------------------------------------------
+Responsive Design
+-------------------------------------------------------------------------------
+
+Why make a responsive website?
+
+What is Responsive Web Development (RWD)?
+
+What is the difference between "Mobile-first" and "Desktop-first" approach?
+
+What are the different meta tags used for RWD and why? 
+
+Why should you include reset css?
+
+What are media queries?
+
+Give an example of media query.
+
+-------------------------------------------------------------------------------
+Bootstrap
+-------------------------------------------------------------------------------
+
+What are the benefits of using Bootstrap?
+
+What are third party libraries are used by Bootstrap?
+
+In what scenario would you use the following? Also, what are these layouts 
+referred to as?
+- .container
+- .container-fluid
+
+Why would you use .row?
+
+What is a gutter? What is this value in bootstrap?
+
+In what scenario would you use the following?
+- .col-xs-
+- .col-sm-
+- .col-md-
+- .col-lg-
+
+What are the various breakpoints supported?
+
+Where would I use .form-group and .form-control?
+
+What if I wanted to change the layout of my form? What standard options do I have?
+
+How would I apply floats?
+
+How can I show / hide elements?
+
+How would I hide an element such that it is hidden only on tablets?
+
+How would you go about creating navigations in bootstrap?
+
+I'd like to create a 2 column layout which render side by side in desktop but
+stack in mobile. What would you suggest?
+
+I'd like to create a login section. This would consist of - 
+- Two sets of inputs that render below each other. Each input consists of a 
+label on the left and a text box on the right.
+- A checkbox to 'Remember me'
+- A login button
+What layout would you suggest?
+
+-------------------------------------------------------------------------------
+JavaScript
+-------------------------------------------------------------------------------
+
+How would you create an array? Get it's length? Access one of its elements?
+Add and remove elements?
+
+How would you create a simple object? Get the number of keys? Access one of
+its values? Add and remove keys?
+
+How would you decide when to use an array or when to use an object?
+
+What is the global object?
+
+What kind of scoping do you have in JavaScript? And related to that, what is
+hoisting?
+
+What are closures? How are they useful?
+
+When defining objects -
+- what is the constructor pattern, it's drawback?
+- what is the prototype patter, it's drawback?
+- give the above drawbacks, what approach would you go with?
+- how would you implement inheritance between classes?
+
+What are the different patterns? When would you use each one?
+
+In simple terms, what is a DOM?
+
+How would you pick elements from a page? For each of these standard methods
+what is the input passed in and what would be the output? And what object can
+these methods be used on?
+
+How would one update the styles on element?
+
+How can I create an element, add it to a page, and then remove it?
+
+How do I attach event listeners on an element?
+
+What are the two different event models?
+
+-------------------------------------------------------------------------------
+jQuery
+-------------------------------------------------------------------------------
+
+Why use jQuery?
+
+There are some standard native lookups in JavaScript, what are their
+corresponding versions in jQuery?
+
+What is the advantage of using these standard lookups in jQuery as well?
+
+What is the difference between .find() and .children()? When would you use one
+over the other?
+
+How would one update the styles on element?
+
+How can I create an element, add it to a page, and then remove it?
+
+How can I figure out the dimensions of an element?
+
+How do I attach event listeners on an element?
+
+How would you go about implementing a div based pop-up that is triggered by
+clicking on a link? It needs to be centered across the screen as well.
+
+How would go about implementing a feature where I need a fixed header and a
+fixed footer (i.e., these sections should be visible at all times and the
+header should appear at the top of the screen while the footer at the bottom
+of the screen). And the portion in the middle of the page (i.e., the content)
+is the only one that should be scrollable.
+
+-------------------------------------------------------------------------------
+Angular JS
+-------------------------------------------------------------------------------
+
+How is Angular JS useful?
+
+What do the following directives do? Give an example.
+ng-app
+ng-bind
+ng-repeat
+ng-init
+ng-controller
+
+How would $scope behave with nested controllers?
+
+What is $rootScope? When would you use it?
+
+What are the various filters?
+How do I add a custom filter?
+
+How would you go about form validation?
+
+How can I load a template? Scenario - I have some HTML that gives me the necessary labels and inputs for the user to input their address. I'd like to make use of this as part of two other forms which are part of two separate views.
+
+In what scenario would you make use of a value, constant, factory, service or provider?
+
+How would one implement routing?
+
+How do I make an AJAX request?
+
+How would you handle an asynchronous request?
+
+How would I add a custom directive?
+What are the different criteria I can use to match?
+How is link useful?
+What does transclude do?
+If there are multiple custom directives that match on an element, how would you control which one would apply first?
+
+-------------------------------------------------------------------------------
+NodeJS
+-------------------------------------------------------------------------------
