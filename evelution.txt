@@ -3,6 +3,7 @@ HTML & CSS
 -------------------------------------------------------------------------------
 
 Give examples of a few elements that do not need closing tags.
+--><br>,<hr>
 
 Explain in what scenario the following tags would be used – 
 - article
@@ -15,32 +16,46 @@ Explain in what scenario the following tags would be used –
 
 What is an example of a block element and an inline element? What is the
 difference between the two? In what situation would you use one over the other?
-
+-->block-new line(div,p,header,footer,li,h)
+	inline-samer line(span,label,b)
 Why use CSS? Why can't I simply use a center tag or a font tag to style my page?
-
+--> representable(user-friendly),reuseblity,shorten the length of HTML
 What are the different ways (or locations) you can define styles on an element?
-I can think of 3.
+-->inline, inside head,external
 
 What are the different values for the following properties? What are the
 effects of each of those values?
-- display
-- position
-- overflow
-- float
+- display-->none,block,table,inline,inline-block,list,
+- position->absolute,fixed,relative,none
+- overflow->hidden,scroll,visible,auto
+- float->left,right,middle,intial
 
 What is the box model?
-
+-->margin{
+		border{
+			padding{
+					content
+							}
+								}
+									}
 What are the two different box-sizing values? How do they work?
+-->content-box, border-box
 
 What is z-index? How does it work? In what situation would I use it?
+--> stack type (lower no-below in the stack)(higher no-upper in stack)
 
 What is the difference between visibility: hidden and display: none?
+-->visibility: hidden- take-place in DOM
+	display: none-dosen't take-place in DOM
 
 What is specificity? How do you calculate it?
-
+-->inline id class,pseudo class elements
+ 
 What does !important do? Why is it considered a bad practice?
+--> force the css (no specificity required)
 
 How would you go about building a 3 column layout?
+-->width 33%
 
 If you have a div on a page that matches on all of the rules below, what
 would be the computed (finally applied) style on the element?
@@ -56,32 +71,41 @@ div.myclass2 {
         float: right;
 }
 
-
 div#myclass1 {
         color: yellow;
         border: 2px solid red;
 }
-
+Ans.-->
+		color: yellow;
+        border: 2px solid red;
+		float: right;
+		overflow: scroll;
 -------------------------------------------------------------------------------
 SASS
 -------------------------------------------------------------------------------
 
 What are the benefits of using SASS over CSS?
+-->preprocessor,variable,less line code,debug,mixins,reuseblity
 
 List out key features of SASS.
+-->mixins,variables,partials(code seprations),loops,debugger
 
 Define a variable.
+-->$var= #sddaad;
 
 What is interpolation?
+-->use sass variables in selectors  and property
+	syntax->#{}
 
 Explain what the following do - 
-@extend
-@import
-@debug
-@error
+@extend-->extend a class (inhertance)
+@import-->inports a _partial
+@debug-->?
+@error-->??
 
 What are the two types of mixin arguments?
-
+-->1.variable argument-@mixin colors($values...);
+	2.Keyword Arguments-@mixin bordered($color, $width: 2px);
 -------------------------------------------------------------------------------
 Responsive Design
 -------------------------------------------------------------------------------
@@ -91,134 +115,246 @@ Why make a responsive website?
 What is Responsive Web Development (RWD)?
 
 What is the difference between "Mobile-first" and "Desktop-first" approach?
-
+-->Mobile-first-first for smaller devices the add more content for PC.(Progressive Enhancement)
+	Desktop-First-vise-versa(Graceful Degradation)
 What are the different meta tags used for RWD and why? 
+--><meta name="width" content="width=device-width, intial-scale=1"/>
+	*maximum-scale
+	*minimum-scale
+	*user-scalable
+	*orientation->portarait,landscape
 
 Why should you include reset css?
-
+-->resets the styling of all HTML elements to a 	consistent baseline
+	
 What are media queries?
+-->provides break point for the different screen sizes
+	to apply different styles in different screen size(device)
 
 Give an example of media query.
+-->@media screen only and (max-width:786px){
 
+}
 -------------------------------------------------------------------------------
 Bootstrap
 -------------------------------------------------------------------------------
 
 What are the benefits of using Bootstrap?
-
+-->	*easily maintainable 
+	*responsive site
+	*default theme and styling
+	*pre-styled elemets
 What are third party libraries are used by Bootstrap?
+-->jQuery
 
 In what scenario would you use the following? Also, what are these layouts 
 referred to as?
-- .container
-- .container-fluid
+- .container-> for fixed width
+- .container-fluid->for all viewport
 
 Why would you use .row?
+-->to set width of elements and make them responsive
 
 What is a gutter? What is this value in bootstrap?
-
+-->space(padding) between two columns.
+	default value-30px(15px on each side of column)
+	can change by using padding
 In what scenario would you use the following?
-- .col-xs-
-- .col-sm-
-- .col-md-
-- .col-lg-
+- .col-xs-->for extra small devices(Phones (<768px))
+- .col-sm-->for small devices(Tablets (>=768px)))
+- .col-md-->for medium devices(Desktops (>=992px))
+- .col-lg-->for large devices(Desktops(=<1200px))
 
 What are the various breakpoints supported?
-
+-->*Phones (<768px)
+	*Tablets (>=768px)
+	*Desktops (>=992px)
+	*Desktops (=<1200px)
 Where would I use .form-group and .form-control?
-
-What if I wanted to change the layout of my form? What standard options do I have?
+-->to give default styling to form elements.
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="email">Email address:</label>
+			<input type="email" class="form-control" id="email">
+		</div>
+	</form>
+What if I wanted to change the layout of my form? 
+What standard options do I have?
+-->form-inline,form-horizontal,form-vertical(default)
 
 How would I apply floats?
-
+--><div class="pull-left">...</div>
+	<div class="pull-right">...</div>
 How can I show / hide elements?
+-->	1st-way:hidden class
+		hidden-sm hidden-md = visible-lg
+		hidden-sm hidden-lg = visible-md
+		hidden-md hidden-lg = visible-sm
+	2nd-way:collapse
+		<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+
+		<div id="demo" class="collapse">
+			sadsdsdsadasdtsadsad.
+		</div>
 
 How would I hide an element such that it is hidden only on tablets?
+--> hidden-sm
 
 How would you go about creating navigations in bootstrap?
+--><nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li> 
+      <li><a href="#">Page 3</a></li> 
+    </ul>
+  </div>
+</nav>
 
 I'd like to create a 2 column layout which render side by side in desktop but
 stack in mobile. What would you suggest?
+--><div class="col-xs-12 col-md-6"></div>
+	<div class="col-xs-12 col-md-6"></div>
 
 I'd like to create a login section. This would consist of - 
-- Two sets of inputs that render below each other. Each input consists of a 
+- Two sets of inputs that render below each other. Each input consists of a  
 label on the left and a text box on the right.
 - A checkbox to 'Remember me'
 - A login button
 What layout would you suggest?
-
+-->form
+	-->div-form-group
+		-->label-label-control(sm-2)
+		-->input-form-control(sm-10)
+		
+		-->label-label-control(sm-2)
+		-->input-form-control(sm-10)
+		
+		-->input-form-control(sm-10 offset-2)
+		
+		-->submit-form-control(sm-10 offset-2)
+		
+		
 -------------------------------------------------------------------------------
 JavaScript
 -------------------------------------------------------------------------------
 
 How would you create an array? Get it's length? Access one of its elements?
 Add and remove elements?
+-->var arr=[1,2,3,4,5];
+	var arr=new array();
+-->arr.length
+-->arr[i]
+-->	add->arr.push(value);
+	remove->arr.splice(start,deletecount);
 
 How would you create a simple object? Get the number of keys? Access one of
 its values? Add and remove keys?
-
+-->var obj={key:value};
+-->var obj.key("."notation)
+-->var x,for x in obj 
+	*Object.keys(obj)).length;
 How would you decide when to use an array or when to use an object?
+-->
 
 What is the global object?
+-->outside  the function
 
 What kind of scoping do you have in JavaScript? And related to that, what is
 hoisting?
+-->*global & local
+	*taking defination upword to the declaration
 
 What are closures? How are they useful?
+-->
 
 When defining objects -
 - what is the constructor pattern, it's drawback?
-- what is the prototype patter, it's drawback?
-- give the above drawbacks, what approach would you go with?
-- how would you implement inheritance between classes?
+-->function ctor(x,y){
+	this.name=x;
+	this.age=y;
+};
+	ctor("shubh",21);
 
+- what is the prototype pattern, it's drawback?
+-->object.create(obj);
+- give the above drawbacks, what approach would you go with?
+
+- how would you implement inheritance between classes?
+-->by using protype
 What are the different patterns? When would you use each one?
 
 In simple terms, what is a DOM?
+-->Document object model--> Tree of nodes(HTML)
 
 How would you pick elements from a page? For each of these standard methods
 what is the input passed in and what would be the output? And what object can
 these methods be used on?
+-->*getElementById("");
+	*getElementsByClass("");
+	*getElementsByName("");
+	-->all these returns Element('s)
 
 How would one update the styles on element?
-
+-->*getElementById("").style.properties=#eer;
 How can I create an element, add it to a page, and then remove it?
-
+-->var a=.createElement(span);
+	.appendChild(a);
+	.removeChild();
 How do I attach event listeners on an element?
-
+-->.addEventListner('click',function(){
+	});
 What are the two different event models?
-
+-->
 -------------------------------------------------------------------------------
 jQuery
 -------------------------------------------------------------------------------
 
 Why use jQuery?
-
+-->*pre defined function
+	*less code 
+	*everything is function
 There are some standard native lookups in JavaScript, what are their
 corresponding versions in jQuery?
+-->$()
 
 What is the advantage of using these standard lookups in jQuery as well?
-
+-->??
 What is the difference between .find() and .children()? When would you use one
 over the other?
 
 How would one update the styles on element?
+-->.css()/.style()
 
 How can I create an element, add it to a page, and then remove it?
-
+-->$("").append("<span>sadsads</span>);
+	*$("").remove();
 How can I figure out the dimensions of an element?
-
+-->$("").width();
+	$("").hight();
 How do I attach event listeners on an element?
-
+-->$("").on('hover',function(){
+	});
 How would you go about implementing a div based pop-up that is triggered by
 clicking on a link? It needs to be centered across the screen as well.
-
+-->  <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all">Show Popup</a>
+    
+    <div data-role="popup" id="myPopup" data-position-to="window">
+      <p>This is a simple popup.</p>
+    </div>
+ 
 How would go about implementing a feature where I need a fixed header and a
 fixed footer (i.e., these sections should be visible at all times and the
 header should appear at the top of the screen while the footer at the bottom
 of the screen). And the portion in the middle of the page (i.e., the content)
 is the only one that should be scrollable.
-
+-->
+	<div class="footer" style="position: fixed; background-color:red">
+	<div class="footer" style="position: fixed;left: 0px;bottom: 0px; background-color:red">
 -------------------------------------------------------------------------------
 Angular JS
 -------------------------------------------------------------------------------
@@ -237,26 +373,68 @@ How would $scope behave with nested controllers?
 What is $rootScope? When would you use it?
 
 What are the various filters?
-How do I add a custom filter?
 
+How do I add a custom filter?
+-->app.filter('name',function(){
+		returns function(val){
+		
+		//To Do.....something
+		
+		}
+	});
+	
 How would you go about form validation?
+-->$dirty,$prestine,$required
 
 How can I load a template? Scenario - I have some HTML that gives me the necessary labels and inputs for the user to input their address. I'd like to make use of this as part of two other forms which are part of two separate views.
+-->custom directives
 
 In what scenario would you make use of a value, constant, factory, service or provider?
+-->
 
 How would one implement routing?
+-->app.config(['$routeProvider',function($routeProvider){
+	$routeProvider
+	.when("/",{
+		templateUrl:"path"
+	})
+	.when("/sads",{
+		templateUrl:"path"
+	})
+	.otherwise(
+		templateUrl:"path"
+	)
+}]);
 
 How do I make an AJAX request?
+-->$http({
+		method:"POST",
+		data:{data:data},
+		header:"something"
+	}).then(){
+			function sucess(res){
+				//to do...
+			},
+			function error(res){
+				//to do.
+			}
+	
+		}
 
 How would you handle an asynchronous request?
 
-How would I add a custom directive?
-What are the different criteria I can use to match?
-How is link useful?
-What does transclude do?
-If there are multiple custom directives that match on an element, how would you control which one would apply first?
 
+How would I add a custom directive?
+-->
+What are the different criteria I can use to match?
+-->
+
+How is link useful?
+-->
+What does transclude do?
+-->
+If there are multiple custom directives that match on an element, how would you control which one would apply first?
+-->priority= number;-->higher the number higher the priority
 -------------------------------------------------------------------------------
 NodeJS
 -------------------------------------------------------------------------------
