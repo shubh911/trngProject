@@ -1,0 +1,48 @@
+Configuration:
+--------------
+-Lazy Fetching(Loading)
+	-used with association
+	-parent entity will be loaded 
+	-later the child entity
+	-DbContext.Configuration.LazyLoadingEnabled
+	-PRoxy Creation rules->Public,Non-shield,Non-Abstract Class
+							-Ctor ParameterLess
+-Eager Loading
+	-DbSet.Include()
+	-DbContext.Configuration.LazyLoadingEnabled=false
+	-DbContext.Configuration.ProxyCreation=false
+	-
+	-->context.Blogs 
+                    .Include("Posts") 
+                    .Include("Blogs"); 
+					
+-AutoDetect
+------------
+	-creates state for every field and detect for changes
+	-DbContext.Configuration.AutoDetectionChangesEnabled
+	-disable it if working with Bulk insert and updates
+	-DetectChanges() to see The Changed Entities
+	
+-Null
+-----
+	-always turn it on
+	-DbContext.Configuration.UseDatabaseNullSemantics
+	-c#:NULL== NULL->TRUE
+
+-ValidateEntity
+-----------------
+	-DbContext.Configuration.ValidateEntityOnSave
+	-for Custom Validation
+		DbContext.ShouldValidationEntity()
+	
+MIGRATON
+----------
+	-Command:PM>Enable-Migrations
+	-modify DB ->update EDM
+	-automatic Migration-->not Recomanded
+	-Code Based Migration->
+			-Migration Table-For History Of changes
+							-Roll Back Is Possible
+			-Add-Migrations<Release_name>
+	
+	
