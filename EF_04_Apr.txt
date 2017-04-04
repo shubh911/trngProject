@@ -1,0 +1,151 @@
+Configuration:
+--------------
+-Lazy Fetching(Loading)
+	-used with association
+	-parent entity will be loaded 
+	-later the child entity
+	-DbContext.Configuration.LazyLoadingEnabled
+	-PRoxy Creation rules->Public,Non-shield,Non-Abstract Class
+							-Ctor ParameterLess
+-Eager Loading
+	-DbSet.Include()
+	-DbContext.Configuration.LazyLoadingEnabled=false
+	-DbContext.Configuration.ProxyCreation=false
+	-
+	-->context.Blogs 
+                    .Include("Posts") 
+                    .Include("Blogs"); 
+					
+-AutoDetect
+------------
+	-creates state for every field and detect for changes
+	-DbContext.Configuration.AutoDetectionChangesEnabled
+	-disable it if working with Bulk insert and updates
+	-DetectChanges() to see The Changed Entities
+	
+-Null
+-----
+	-always turn it on
+	-DbContext.Configuration.UseDatabaseNullSemantics
+	-c#:NULL== NULL->TRUE
+
+-ValidateEntity
+-----------------
+	-DbContext.Configuration.ValidateEntityOnSave
+	-for Custom Validation
+		DbContext.ShouldValidationEntity()
+	
+MIGRATON
+----------
+	-Command:PM>Enable-Migrations
+	-modify DB ->update EDM
+	-automatic Migration-->not Recomanded
+	-Code Based Migration->
+			-Migration Table-For History Of changes
+							-Roll Back Is Possible
+			-Add-Migrations<Release_name>
+==========================================================================================================================================
+Date:3-April-17
+----------------
+
+LINQ:
+-------
+-IEnumrable vs IQuerable
+-EF 3.5 and above(LINQ Support)
+-Adaptor Pattern(Design)
+-Delegets: 
+			-function-return value 
+			-action-dosen't return
+			-Predicate-returns boolean
+-Syntax-
+	-Query Syntax
+				-Simple Query Syntax:
+				using (var context = new SchoolDBEntities()){	//let is just a keyword same as JS
+					var Query = from st in context.Students
+									where st.StudentName == "Bill"
+									select st;
+				   
+					var studentCount = Query.FirstOrDefault<Student>();	//SELECT * FROM db and Return only 1-->Slower
+				};							.SingleOrDefault<Student>();//SELECT top 1 FROM db and Return only 1-->Faster
+}
+				
+				-IEnumrable-
+					-allows to execute queries in memory.
+					-No Lazy Loading
+					-Any filter work on the client side(Filtering of data in client side not in DB)
+					-Extension methods receives is a method to invoke.
+					-not useful when  network payload is issue/memory is an issue
+					-slow filtering cause DB is much better while it have index built then the local memory filtering
+				
+				-IQuerable-
+					-it inherits from IEnumrable
+					-LAzy Loading
+					-DB side Filtering
+					-Method to move between the items
+					-
+	-Method Syntax
+				-Simple Method Syntax
+				using (var context = new SchoolDBEntities()){
+					var Query = context.Students.where(s => s.StudentName == "Bill");
+					var student = Query.FirstOrDefault<Student>();
+				}						.SingleOrDefault<Student>();
+}
+	
+	
+	
+-Projection
+-------------
+	-select and selectMany
+	
+Problem With FoeEach:
+-----------------------
+	-Round trip to DB triggered each time 'foreach' loop is executed
+	-serious performance issue
+	-Solution:use toList() to remove recall to DB;
+	
+=============================================================================================================================================================================
+Date:4-Apr-17
+----------------
+DATA INTEGRITY
+==================
+Entity States
+-------------
+	-Unchanged-->fetched from DB or Attached in context
+	-added
+	-modified
+	-detached-->not linked(do not look for changes)
+	-deleted
+Connected Mode
+---------------
+	-always connected with DB
+	-always in a same context
+	-entity states handled automatically
+	-by "using" Keyword
+	
+Disconnected Mode:
+-------------------
+	-Entity Retrieval and saving happens in scope of different DB Context.
+	-in different context
+	-System.Data.Entity.EntityState.Added
+									.Deleted
+									.Detached
+									.Modified
+									.Unchanged
+	-by default the state is Unchanged
+	-set the state of every entity parent+child every time or it will not change
+Attached vs Detached
+------------------------
+	-Attached:
+		-for connected mode These happens automatically but for disconnected mode these things play a role.
+		-Entity Created outside current context it attach it for tracking.
+	-Detached:
+		-vice-versa
+
+Just Big Words
+----------------	
+	-AddSingleEntity: Just adding in a single table(single class)
+	-AddEntityGraph: adding or dealing in multiple tables(multiple classes)
+
+Tools:
+---------
+	-linq pad
