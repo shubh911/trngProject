@@ -3,9 +3,9 @@ HTML & CSS
 -------------------------------------------------------------------------------
 
 Give examples of a few elements that do not need closing tags.
---><br>,<hr>
+--><br>,<hr>,<input>
 
-Explain in what scenario the following tags would be used – 
+Explain in what scenario the following tags would be used â€“ 
 - article
 - header
 - footer
