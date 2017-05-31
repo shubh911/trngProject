@@ -1,39 +1,237 @@
-<!DOCTYPE html>
+<!DOCKTYPE html>
 <html>
 	<head>
-		<title>HomePage</title>
-		<meta charset="UTF-8">
-		
-		<!--StyleSheets for Boootstrap-->
-		<link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
-		<link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap-theme.min.css">		
-		<link rel="stylesheet" href="css\default.css">
-		<!--script for bootstrap-->
-		<script src = "js\jquery.js"></script>
-		<script src="node_modules\bootstrap\dist\js\bootstrap.min.js" ></script>
-		<!--scripts defined in js folder-->
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-		<script src="js\default.js" ></script>
+		<style>
+			header{
+				text-align:center;
+			}
+			nav{
+			
+				background-color:#000;
+				padding:10px;
+			}
+			span{
+				padding:10px 20px;
+				color:white;
+				
+			}
+			a{
+				color:white;
+				text-decoration:none;
+			}
+			a:hover{
+				color:red;
+			}
+			aside{
+				width:200px;
+				border:1px solid red;
+				height:626px;
+				float:left;
+			}
+			section{
+				border:1px solid yellow;
+				overflow:hidden;
+			}
+			artical{
+				display:block;
+				border:dotted 1px grey;
+				width:100%;
+				padding:20px;
+			
+				margin:5px 0; 
+			}
+			label{
+				display:inline-block;
+				width:200px;
+				padding:5px;
+			}
+			.btn{
+				margin:20px 0 0 200px;
+				
+			}
+			#div1{
+				border:1px solid blue;
+				height:200px;
+				
+			}
+			canvas{
+				height:400px;
+				width:400px;
+				border:1px solid black;
+			}
+		</style>
 	</head>
-	<body ng-app="myApp">
-		<div class="container-fluid">
-			<header>
-				<div class="row mid">
-					<div class="col-lg-12 bg-primary">
-						<h1>Library Project!!</h1>
-					</div>
-				</div>
-			</header>
-			<div ng-view>
-						<!--This is the most useful part of this page cause every view is gonna update in this area
-							*viewList
-							*addAuthor
-							*addBook
-							*updateBook& author
-							but this part needs modification cause the ng-view can also contains the another view so
-							we need to get a different controller so no ambiguity occurs with ng-view-->
-			</div><!--view Ends here-->
-		</div><!--Container Ends here-->
+	<body>
+		<header>
+			<h1>Testing</h1>
+		</header>
+		<nav id="navigation">
+			<span><a href="#">Home</a></span>
+			<span><a href="#">About</a></span>
+			<span><a href="#">Details</a></span>
+		</nav>
+		<aside>
+			<p>sadsa sadsa sad sasadsad sadsad sad a</p>
+			<h4>this is Aside</h4>
+		</aside>
+		<section>
+			<artical>
+				<form>
+					<label>Title</label><input type="text" placeholder="Title" required/></br>
+					<label>Name</label><input type="text" placeholder="Name" required/></br>
+					<label>Phone Number</label><input type="tel" placeholder="2323344344" required pattern="^[1-9]+[0-9]{9}$"/></br>
+					<label>Email</label><input type="email" placeholder="abc@gmail.com"/></br>
+					<label>Website</label><input type="url" placeholder="www.bored.co.in"/></br>
+					<label>No.of items to order</label><input type="number" placeholder="0"/></br>
+					<label>Search</label><input type="search" placeholder="Type here"/></br>
+					<label>Delivery Date</label><input type="date" placeholder="DD-MM-YYYY"/></br>
+					<label>Length</label><input type="range"/></br>
+					<label>Color</label><input type="color"/></br>
+					<label>Time of Delivery</label><input type="time" placeholder="HH:MM"/></br>
+					<input type="submit" class='btn'/>
+				</form>
+			</artical>
+			<artical>
+				<label>Search </label><input type='search'/> <button>Go</button>
+			</artical>
+			<artical>
+				progress:<progress  max="100"></progress>
+			</artical>
+			<artical>
+				Disk Usage:<meter value="22" max="100" min="0" ></progress>
+				
+			</artical>
+		</section>
+		<footer>
+			<h2>Links:
+			<ul content`editable="true">
+				<li> sad sads ad</li>
+				<li> dsad sadsad sa</li>
+				<li> sadsad sad sa </li>
+				<li> sadsadsa sd</li>
+			</ul>
+			<section>
+				<video controls autoplay>
+					<source  src="C:\Users\Public\Videos\Sample Videos\Wildlife.wmv" type="video/wmv">
+				</video>
+				<div class=""></div>
+			</section>
+				<button onClick="allOdd()">For Odd</button>
+				<button onClick="allEven()">For Even</button>
+				<button onClick="allElem()">For All</button>
+				<ul class="evenOdd">
+					<li class="Odd">
+						sadsa
+					</li>
+					<li class="even">
+						213sad
+					</li>
+					<li class="Odd">
+						23121
+					</li>
+					<li class="even">
+						2133214
+					</li>
+					<li class="Odd">
+						sfd45
+					</li>
+				</ul>
+				<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"  ></div>
+
+				<img id="drag1" src="C:\Users\Public\Pictures\Sample Pictures\Penguins.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+				
+				
+
+		</footer>
+		<div>
+			<canvas id="can">
+				For error On canvas
+			</canvas>
+		</div>
+		<div>
+			<canvas id="can2">
+				For canvas 2 Error
+			</canvas>	
+		</div>
+		<script>
+			/*function toggleFullScreen() {
+ 			 var elem=document.getElementById("navigation");
+			 if (!document.fullscreenElement) {
+			      elem.requestFullscreen();
+			  } else {
+				    if (document.exitFullscreen) {
+		      			document.exitFullscreen(); 
+    					}
+  				}
+			 }*/
+			function allOdd(){
+				var arr=document.querySelectorAll("li.odd");
+				for(var i=0;i<arr.length;i++){
+					arr[i].style.color="red";
+				}
+			}
+			function allEven(){
+				var arr=document.querySelectorAll("li.even");
+				for(var i=0;i<arr.length;i++){
+					arr[i].style.color="green";
+				}
+			}
+			function allElem(){
+				console.log("sadsad");
+
+				var arr=document.querySelectorAll("li");
+				console.log(arr);
+				for(var i=0;i<arr.length;i++){
+					arr[i].style.color="yellow";
+				}
+			}
+
+
+			/*Drag Code Here*/
+			function allowDrop(ev) {
+			    ev.preventDefault();
+			}
+
+			function drag(ev) {
+			    ev.dataTransfer.setData("text", ev.target.id);
+			}
+
+			function drop(ev) {
+			    ev.preventDefault();
+			    var data = ev.dataTransfer.getData("text");
+			    ev.target.appendChild(document.getElementById(data));
+			}
+			
+			var context=document.getElementById("can").getContext("2d");
+			
+			var width=200;
+			var height=150;
+			var padding=20;
+			context.beginPath();
+			context.moveTo(padding+width/2,padding);
+			context.lineTo(padding+width,height+padding);
+			context.lineTo(padding,height+padding);
+			context.closePath();
+			context.strokeStyle="red";
+			context.stroke();
+			
+
+
+			
+			var context2=document.getElementById("can2").getContext("2d");
+			
+			var width=200;
+			var height=150;
+			var padding=20;
+			context2.beginPath();
+			context2.moveTo(padding+width/2,padding);
+			context2.lineTo(padding+width,height+padding);
+			context2.lineTo(padding,height+padding);
+			context2.closePath();
+			context2.fillStyle="red";
+			context2.fill();
+			
+		</script>
+		
 	</body>
 </html>
